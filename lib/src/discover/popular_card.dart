@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:zim_birds/src/details/detail_page.dart';
+import 'package:zim_birds/src/models/bird_model.dart';
 
 class PopularCard extends StatelessWidget {
-  const PopularCard({Key? key}) : super(key: key);
+  final Bird bird;
+  const PopularCard({Key? key, required this.bird}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

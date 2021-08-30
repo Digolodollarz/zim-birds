@@ -1,1 +1,4 @@
 node_modules/
+/birds.json
+/firebase-import.js
+/service-key.json
