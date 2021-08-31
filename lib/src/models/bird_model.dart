@@ -251,3 +251,7 @@ class Sono {
   };
 }
 
+extension Flickr on Photo{
+  String url() => 'https://live.staticflickr.com/$server/${id}_${secret}_w.jpg';
+}
+

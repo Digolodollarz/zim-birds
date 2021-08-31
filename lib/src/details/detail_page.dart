@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:zim_birds/src/models/bird_model.dart';
 import 'gallery/gallery.dart';
 
 class DetailPage extends StatelessWidget {
-  const DetailPage({Key? key}) : super(key: key);
+  final Bird bird;
+
+  const DetailPage({Key? key, required this.bird}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +18,7 @@ class DetailPage extends StatelessWidget {
             height: bgHeight,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage("assets/stock/african_fish_eagle.jpeg"),
+                  image: NetworkImage('${bird.photos?.first.url()}'),
                   fit: BoxFit.cover,
                   alignment: Alignment.topCenter),
             ),
@@ -36,7 +39,7 @@ class DetailPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        'African Fish Eagle',
+                        bird.englishName ?? '',
                         style: Theme.of(context)
                             .textTheme
                             .headline4!
@@ -78,16 +81,16 @@ class DetailPage extends StatelessWidget {
                               child: TabBarView(
                                 children: [
                                   Container(
-                                    child: Text(africanFishEagleDetails),
+                                    child: Overview(bird: bird),
                                   ),
                                   Container(
                                     child: Column(
                                       children: [
                                         ImageGrid(
                                           images: List.generate(
-                                            4,
-                                            (index) => Image.asset(
-                                              'assets/stock/african_fish_eagle.jpeg',
+                                            bird.photos?.length ?? 0,
+                                            (index) => Image.network(
+                                              '${bird.photos![index].url()}',
                                               fit: BoxFit.cover,
                                             ),
                                           ),
@@ -131,3 +134,41 @@ The African fish eagle (Haliaeetus vocifer) or the African sea eagle, is a large
 As a result of its large range, it is known in many languages. Examples of names include: nkwazi in Chewa, aigle pêcheur in French, hungwe in Shona, inkwazi in isiZulu, and 'ntšhu' (pronounced "ntjhu") in Northern Sotho. 
 
 This species may resemble the bald eagle in appearance; though related, each species occurs on different continents, with the bald eagle being resident in North America.''';
+
+class Overview extends StatelessWidget {
+  final Bird bird;
+
+  const Overview({Key? key, required this.bird}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Text(
+                'Scientific Name: ',
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+              Flexible(child: Text(bird.scientificName ?? 'Unknown')),
+            ],
+          ),
+          Row(
+            children: [
+              Text(
+                'Family: ',
+                style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+              ),
+              Flexible(child: Text(bird.family ?? 'Unknown')),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}

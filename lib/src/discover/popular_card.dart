@@ -4,13 +4,14 @@ import 'package:zim_birds/src/models/bird_model.dart';
 
 class PopularCard extends StatelessWidget {
   final Bird bird;
+
   const PopularCard({Key? key, required this.bird}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => DetailPage())),
+          .push(MaterialPageRoute(builder: (context) => DetailPage(bird: bird,))),
       child: AspectRatio(
         aspectRatio: 3 / 4,
         child: Container(
@@ -20,8 +21,8 @@ class PopularCard extends StatelessWidget {
           clipBehavior: Clip.antiAlias,
           child: Stack(
             children: [
-              Image.asset(
-                'assets/stock/african_fish_eagle.jpeg',
+              Image.network(
+                '${bird.photos?.first.url()}',
                 fit: BoxFit.cover,
                 height: double.infinity,
               ),
@@ -38,11 +39,23 @@ class PopularCard extends StatelessWidget {
                       colors: [Colors.transparent, Colors.black45],
                     ),
                   ),
-                  child: Text(
-                    'African Fish Eagle',
-                    style: Theme.of(context).textTheme.headline6!.copyWith(
-                          color: Colors.white,
-                        ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        bird.scientificName ?? '',
+                        style: Theme.of(context).textTheme.bodyText2!.copyWith(
+                              color: Colors.white,
+                          fontSize: 12
+                            ),
+                      ),
+                      Text(
+                        bird.englishName ?? '',
+                        style: Theme.of(context).textTheme.headline6!.copyWith(
+                              color: Colors.white,
+                            ),
+                      ),
+                    ],
                   ),
                 ),
               ),
