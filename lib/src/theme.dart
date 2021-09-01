@@ -24,3 +24,8 @@ ThemeData appTheme() => ThemeData(
         ),
       ),
     );
+
+
+class AppTheme{
+  static const borderRadius = 8.0;
+}

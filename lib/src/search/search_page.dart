@@ -14,11 +14,13 @@ class _SearchPageState extends State<SearchPage> {
       if (birdService.searching) return CircularProgressIndicator();
       final birds = birdService.all!;
       return Container(
-        child: ListView.builder(
+        margin: EdgeInsets.all(20),
+        child: ListView.separated(
           itemBuilder: (context, position) {
             return SearchResultCard(bird: birds[position]);
           },
           itemCount: birds.length,
+          separatorBuilder: (context, _) => SizedBox(height: 16),
         ),
       );
     });

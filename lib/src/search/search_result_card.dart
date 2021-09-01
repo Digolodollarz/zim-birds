@@ -7,19 +7,35 @@ class SearchResultCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return InkWell(
+      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+          builder: (context) => DetailPage(
+                bird: bird,
+              ))),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Flexible(
             flex: 1,
-            child: Container(
-              child: Image.network(bird.featurePhoto()?.url() ?? ''),
+            child: AspectRatio(
+              aspectRatio: 4 / 3,
+              child: Container(
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(AppTheme.borderRadius)),
+                child: Image.network(
+                  bird.featurePhoto()?.url() ?? '',
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
+          SizedBox(width: 8),
           Flexible(
             flex: 2,
             child: Container(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     bird.englishName ?? '',
