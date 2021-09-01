@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zim_birds/src/discover/discover_page.dart';
+import 'package:zim_birds/src/search/search.dart';
 import 'package:zim_birds/src/services/bird_service.dart';
 
 /// Application homepage
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
           },
           children: <Widget>[
             DiscoverPage(),
-            Blue(),
+            SearchPage(),
             Yellow(),
           ],
         );

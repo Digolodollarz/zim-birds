@@ -6,8 +6,10 @@ const allPath = 'all';
 
 class BirdService with ChangeNotifier {
   final fire = FirebaseFirestore.instance;
+  bool searching = false;
 
   List<Bird>? all;
+  List<Bird>? results;
 
   BirdService() {
     this.init();
@@ -26,5 +28,24 @@ class BirdService with ChangeNotifier {
       print(this.all);
       this.notifyListeners();
     });
+  }
+
+  /// Query CloudFirestore
+  ///
+  /// [query] - String to be searched across multiple fields on the
+  /// bird info. Something akin to contains.
+  search(String query) async {
+    searching = true;
+    this.notifyListeners();
+    try {
+      final snapshot = await fire.collection(allPath).limit(20).get();
+      print('docs');
+      print(snapshot);
+      final birds = snapshot.docs.map<Bird>((e) => Bird.fromFire(e)).toList();
+      this.results = birds;
+      this.notifyListeners();
+    } finally {
+      searching = false;
+    }
   }
 }
