@@ -19,29 +19,36 @@ class BirdService with ChangeNotifier {
     this.getAll();
   }
 
+  /// Fetches all documents from Cloud Firestore
+  ///
+  /// The local bird list will be used to search
   getAll() {
-    fire.collection(allPath).limit(20).snapshots().listen((event) {
-      print('docs');
-      print(event.docs);
+    fire.collection(allPath).snapshots().listen((event) {
       final birds = event.docs.map<Bird>((e) => Bird.fromFire(e)).toList();
       this.all = birds;
-      print(this.all);
       this.notifyListeners();
     });
   }
 
-  /// Query CloudFirestore
+  /// Search for a bird
   ///
   /// [query] - String to be searched across multiple fields on the
   /// bird info. Something akin to contains.
+  ///
+  /// Search is done against a local list, due to the way FireStore handles
+  /// searching. This is some low level attempt at a fuzzy matching algorithm.
   search(String query) async {
+    print('Querying $query');
     searching = true;
     this.notifyListeners();
     try {
-      final snapshot = await fire.collection(allPath).limit(20).get();
-      print('docs');
-      print(snapshot);
-      final birds = snapshot.docs.map<Bird>((e) => Bird.fromFire(e)).toList();
+      final birds = this.all!.where((bird) {
+        return bird
+            .toJson()
+            .toString()
+            .toLowerCase()
+            .contains(query.toLowerCase());
+      }).toList();
       this.results = birds;
       this.notifyListeners();
     } finally {

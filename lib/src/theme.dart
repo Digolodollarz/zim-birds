@@ -17,15 +17,14 @@ ThemeData appTheme() => ThemeData(
         ),
         bodyText1: TextStyle(color: Color(0xFF494949)),
         bodyText2: TextStyle(
-          color: Color(0xFF696969),
-          fontSize: 14.5,
-          fontWeight: FontWeight.w500,
-          height: 1.5
-        ),
+            color: Color(0xFF696969),
+            fontSize: 14.5,
+            fontWeight: FontWeight.w500,
+            height: 1.5),
       ),
     );
 
-
-class AppTheme{
+class AppTheme {
   static const borderRadius = 8.0;
+  static const padding = 20.0;
 }
