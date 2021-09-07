@@ -80,7 +80,26 @@ class _SearchPageState extends State<SearchPage> {
                           return Column(
                             children: [
                               Container(
-                                child: AdWidget(ad: _ad),
+                                child: AdWidget(
+                                    ad: BannerAd(
+                                  adUnitId: AdHelper.bannerAdUnitId,
+                                  size: AdSize.banner,
+                                  request: AdRequest(),
+                                  listener: BannerAdListener(
+                                    onAdLoaded: (_) {
+                                      setState(() {
+                                        _isAdLoaded = true;
+                                      });
+                                    },
+                                    onAdFailedToLoad: (ad, error) {
+                                      // Releases an ad resource when it fails to load
+                                      ad.dispose();
+
+                                      print(
+                                          'Ad load failed (code=${error.code} message=${error.message})');
+                                    },
+                                  ),
+                                )..load()),
                                 width: _ad.size.width.toDouble(),
                                 height: 72.0,
                                 alignment: Alignment.center,
