@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zim_birds/src/models/bird_model.dart';
 
 class FeaturedCard extends StatelessWidget {
-  const FeaturedCard({Key? key}) : super(key: key);
+  final Bird bird;
+  const FeaturedCard({Key? key, required this.bird}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +16,8 @@ class FeaturedCard extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: Stack(
           children: [
-            Image.asset(
-              'assets/stock/african_fish_eagle.jpeg',
+            Image.network(
+              '${bird.featurePhoto()?.url()}',
               fit: BoxFit.cover,
               width: double.infinity,
             ),
@@ -33,7 +35,7 @@ class FeaturedCard extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  'African Fish Eagle',
+                  '${bird.englishName}',
                   style: Theme.of(context).textTheme.bodyText1!.copyWith(
                     color: Colors.white,
                     fontWeight: FontWeight.bold

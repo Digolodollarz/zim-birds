@@ -1,12 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:zim_birds/src/models/bird_model.dart';
+import 'package:zim_birds/src/services/bird_service.dart';
 import 'gallery/gallery.dart';
 
-class DetailPage extends StatelessWidget {
+class DetailPage extends StatefulWidget {
   final Bird bird;
 
   const DetailPage({Key? key, required this.bird}) : super(key: key);
 
+  @override
+  _DetailPageState createState() => _DetailPageState();
+}
+
+class _DetailPageState extends State<DetailPage> {
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<BirdService>(context, listen: false).view(widget.bird);
+  }
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -18,7 +30,7 @@ class DetailPage extends StatelessWidget {
             height: bgHeight,
             decoration: BoxDecoration(
               image: DecorationImage(
-                  image: NetworkImage('${bird.photos?.first.url()}'),
+                  image: NetworkImage('${widget.bird.photos?.first.url()}'),
                   fit: BoxFit.cover,
                   alignment: Alignment.topCenter),
             ),
@@ -39,7 +51,7 @@ class DetailPage extends StatelessWidget {
                   child: Row(
                     children: [
                       Text(
-                        bird.englishName ?? '',
+                        widget.bird.englishName ?? '',
                         style: Theme.of(context)
                             .textTheme
                             .headline4!
@@ -81,16 +93,16 @@ class DetailPage extends StatelessWidget {
                               child: TabBarView(
                                 children: [
                                   Container(
-                                    child: Overview(bird: bird),
+                                    child: Overview(bird: widget.bird),
                                   ),
                                   Container(
                                     child: Column(
                                       children: [
                                         ImageGrid(
                                           images: List.generate(
-                                            bird.photos?.length ?? 0,
+                                            widget.bird.photos?.length ?? 0,
                                             (index) => Image.network(
-                                              '${bird.photos![index].url()}',
+                                              '${widget.bird.photos![index].url()}',
                                               fit: BoxFit.cover,
                                             ),
                                           ),

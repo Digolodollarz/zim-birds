@@ -22,7 +22,7 @@ class PopularCard extends StatelessWidget {
           child: Stack(
             children: [
               Image.network(
-                '${bird.photos?.first.url()}',
+                '${bird.featurePhoto()?.url()}',
                 fit: BoxFit.cover,
                 height: double.infinity,
               ),
