@@ -1,5 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="tech.diggle.apps.zim_birds.zim_birds">
+    <uses-permission android:name="android.permission.INTERNET"/>
    <application
         android:label="zim_birds"
         android:icon="@mipmap/ic_launcher">

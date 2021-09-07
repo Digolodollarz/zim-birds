@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:zim_birds/src/details/audio/audio_page.dart';
 import 'package:zim_birds/src/models/bird_model.dart';
 import 'package:zim_birds/src/services/bird_service.dart';
 import 'gallery/gallery.dart';
@@ -19,6 +20,7 @@ class _DetailPageState extends State<DetailPage> {
     super.initState();
     Provider.of<BirdService>(context, listen: false).view(widget.bird);
   }
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
@@ -82,7 +84,7 @@ class _DetailPageState extends State<DetailPage> {
                               tabs: [
                                 Tab(text: 'Overview'),
                                 Tab(text: 'Gallery'),
-                                Tab(text: 'Ratings'),
+                                Tab(text: 'Recordings'),
                               ],
                             ),
                             Container(
@@ -111,7 +113,10 @@ class _DetailPageState extends State<DetailPage> {
                                       ],
                                     ),
                                   ),
-                                  Container(),
+                                  Container(
+                                      child: AudioPage(
+                                    files: widget.bird.recordings ?? [],
+                                  )),
                                 ],
                               ),
                             ),
