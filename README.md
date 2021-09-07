@@ -2,15 +2,12 @@
 
 Showcasing Zimbabwean birds
 
-## Getting Started
+## What it does
+This project has imagery for most of birds that are found in Zimbabwe,
+and audio recordings for a large number of them as well.
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Screenshots
+![Screenshot 1](assets/screenshots/Simulator Screen Shot - iPhone X - 2021-09-07 at 16.01.17.png)|
+![Screenshot 2](assets/screenshots/Simulator Screen Shot - iPhone X - 2021-09-07 at 16.01.30.png)|
+![Screenshot 3](assets/screenshots/Simulator Screen Shot - iPhone X - 2021-09-07 at 16.01.46.png)|
+![Screenshot 4](assets/screenshots/Simulator Screen Shot - iPhone X - 2021-09-07 at 16.02.06.png)

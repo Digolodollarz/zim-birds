@@ -2,7 +2,7 @@
     package="tech.diggle.apps.zim_birds.zim_birds">
     <uses-permission android:name="android.permission.INTERNET"/>
    <application
-        android:label="zim_birds"
+        android:label="Zim Birds"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
@@ -28,6 +28,9 @@
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
               />
+            <meta-data
+                android:name="com.google.android.gms.ads.APPLICATION_ID"
+                android:value="ca-app-pub-2093893395803299~7407562985"/>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
