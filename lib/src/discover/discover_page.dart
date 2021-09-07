@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zim_birds/src/models/bird_model.dart';
+import 'package:zim_birds/src/search/search.dart';
 import 'package:zim_birds/src/services/bird_service.dart';
 import 'dart:async';
 import 'package:async/async.dart';
@@ -48,8 +49,8 @@ class _DiscoverPageState extends State<DiscoverPage> {
             return Column(
               children: [
                 Text(
-                  'Hey John! What are you going to watch today?',
-                  style: Theme.of(context).textTheme.headline6,
+                  'All Zim Birds',
+                  style: Theme.of(context).textTheme.headline4,
                 ),
                 SizedBox(height: 20),
                 Row(
@@ -60,7 +61,18 @@ class _DiscoverPageState extends State<DiscoverPage> {
                         style: Theme.of(context).textTheme.headline5,
                       ),
                     ),
-                    InkWell(child: Text('See all')),
+                    InkWell(
+                      child: Text(
+                        'See all',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2!
+                            .copyWith(color: Theme.of(context).primaryColor),
+                      ),
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              AllPage(searchType: SearchType.POPULAR))),
+                    ),
                   ],
                 ),
                 SizedBox(height: 10),
@@ -91,13 +103,17 @@ class _DiscoverPageState extends State<DiscoverPage> {
                       style: Theme.of(context).textTheme.headline5,
                     )),
                     InkWell(
-                        child: Text(
-                      'See all',
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyText2!
-                          .copyWith(color: Theme.of(context).primaryColor),
-                    )),
+                      child: Text(
+                        'See all',
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2!
+                            .copyWith(color: Theme.of(context).primaryColor),
+                      ),
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) =>
+                              AllPage(searchType: SearchType.FEATURED))),
+                    ),
                   ],
                 ),
                 SizedBox(height: 10),

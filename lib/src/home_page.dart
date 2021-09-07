@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:zim_birds/src/about.dart';
 import 'package:zim_birds/src/discover/discover_page.dart';
 import 'package:zim_birds/src/search/search.dart';
 import 'package:zim_birds/src/services/bird_service.dart';
@@ -25,11 +26,11 @@ class _HomePageState extends State<HomePage> {
       ),
       BottomNavigationBarItem(
         icon: new Icon(Icons.search),
-          label: ''
+          label: 'Search'
       ),
       BottomNavigationBarItem(
           icon: Icon(Icons.info_outline),
-          label: ''
+          label: 'About'
       )
     ];
   }
@@ -49,8 +50,8 @@ class _HomePageState extends State<HomePage> {
           },
           children: <Widget>[
             DiscoverPage(),
-            SearchPage(),
-            Yellow(),
+            SearchPage(searchType: SearchType.SEARCH),
+            AboutPage(),
           ],
         );
       }

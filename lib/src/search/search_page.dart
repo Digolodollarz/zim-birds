@@ -1,7 +1,8 @@
 part of 'search.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({Key? key}) : super(key: key);
+  final SearchType searchType;
+  const SearchPage({Key? key, required this.searchType}) : super(key: key);
 
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -13,8 +14,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   void initState() {
     super.initState();
-    // _searchController.addListener(() { })
-    Provider.of<BirdService>(context, listen: false).search('');
+    // Provider.of<BirdService>(context, listen: false).search(' ');
   }
 
   @override
@@ -64,4 +64,8 @@ class InputDecorations {
           borderRadius: BorderRadius.circular(
     AppTheme.borderRadius,
   )));
+}
+
+enum SearchType{
+  SEARCH, FEATURED, POPULAR
 }

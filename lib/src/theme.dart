@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 ThemeData appTheme() => ThemeData(
       primaryColor: Colors.deepOrange,
-      textTheme: TextTheme(
+      textTheme: GoogleFonts.titilliumWebTextTheme(TextTheme(
         headline6: TextStyle(
           fontWeight: FontWeight.w500,
           fontSize: 18,
@@ -12,8 +13,9 @@ ThemeData appTheme() => ThemeData(
           fontSize: 20,
         ),
         headline4: TextStyle(
-          fontWeight: FontWeight.w500,
-          fontSize: 24,
+          fontWeight: FontWeight.w600,
+          fontSize: 26,
+          color: Colors.black87
         ),
         bodyText1: TextStyle(color: Color(0xFF494949)),
         bodyText2: TextStyle(
@@ -21,7 +23,7 @@ ThemeData appTheme() => ThemeData(
             fontSize: 14.5,
             fontWeight: FontWeight.w500,
             height: 1.5),
-      ),
+      )),
     );
 
 class AppTheme {
