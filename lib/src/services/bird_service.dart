@@ -25,6 +25,8 @@ class BirdService with ChangeNotifier {
   /// Fetches all documents from Cloud Firestore
   ///
   /// The local bird list will be used to search
+  /// TODO: Optimize this function for perfomance on slow devices
+  /// ** bottleneck
   getAll() async {
     fire.collection(allPath).snapshots().listen((event) {
       final birds = event.docs.map<Bird>((e) => Bird.fromFire(e)).toList();
@@ -58,6 +60,7 @@ class BirdService with ChangeNotifier {
   /// Update view count on a bird
   ///
   /// todo: Limit views by a user
+  /// implementation details still not known.
   view(Bird bird) async {
     print('Updating');
     fire
@@ -75,6 +78,8 @@ class BirdService with ChangeNotifier {
   ///
   /// Search is done against a local list, due to the way FireStore handles
   /// searching. This is some low level attempt at a fuzzy matching algorithm.
+  /// 
+  /// Something needs to be done about this
   search(String query) async {
     print('Querying $query');
     searching = true;

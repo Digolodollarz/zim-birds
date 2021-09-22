@@ -102,31 +102,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-class Blue extends StatefulWidget {
-  @override
-  _BlueState createState() => _BlueState();
-}
-
-class _BlueState extends State<Blue> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blueAccent,
-    );
-  }
-}
-
-class Yellow extends StatefulWidget {
-  @override
-  _YellowState createState() => _YellowState();
-}
-
-class _YellowState extends State<Yellow> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.yellowAccent,
-    );
-  }
-}

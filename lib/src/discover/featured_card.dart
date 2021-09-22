@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:zim_birds/src/models/bird_model.dart';
 
@@ -16,8 +17,8 @@ class FeaturedCard extends StatelessWidget {
         clipBehavior: Clip.antiAlias,
         child: Stack(
           children: [
-            Image.network(
-              '${bird.featurePhoto()?.url()}',
+            CachedNetworkImage(
+              imageUrl: '${bird.featurePhoto()?.url()}',
               fit: BoxFit.cover,
               width: double.infinity,
             ),

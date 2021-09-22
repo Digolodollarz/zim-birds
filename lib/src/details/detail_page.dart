@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zim_birds/src/details/audio/audio_page.dart';
@@ -103,8 +104,8 @@ class _DetailPageState extends State<DetailPage> {
                                         ImageGrid(
                                           images: List.generate(
                                             widget.bird.photos?.length ?? 0,
-                                            (index) => Image.network(
-                                              '${widget.bird.photos![index].url()}',
+                                            (index) => Image(
+                                              image: CachedNetworkImageProvider('${widget.bird.photos![index].url()}'),
                                               fit: BoxFit.cover,
                                             ),
                                           ),

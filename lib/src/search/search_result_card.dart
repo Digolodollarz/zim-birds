@@ -23,8 +23,8 @@ class SearchResultCard extends StatelessWidget {
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(AppTheme.borderRadius)),
-                child: Image.network(
-                  bird.featurePhoto()?.url() ?? '',
+                child: CachedNetworkImage(
+                  imageUrl: bird.featurePhoto()?.url() ?? '',
                   fit: BoxFit.cover,
                 ),
               ),
