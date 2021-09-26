@@ -28,7 +28,7 @@ class BirdService with ChangeNotifier {
   /// TODO: Optimize this function for perfomance on slow devices
   /// ** bottleneck
   getAll() async {
-    fire.collection(allPath).snapshots().listen((event) {
+    fire.collection(allPath).limit(200).snapshots().listen((event) {
       final birds = event.docs.map<Bird>((e) => Bird.fromFire(e)).toList();
       this.all = birds;
       this.notifyListeners();

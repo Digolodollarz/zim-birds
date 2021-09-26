@@ -21,24 +21,6 @@ class _DiscoverPageState extends State<DiscoverPage> {
   final fire = FirebaseFirestore.instance;
   Stream<QuerySnapshot<dynamic>>? all;
 
-  // getAll() {
-  //   // fire.collection(allPath).snapshots().listen((event) {
-  //   //   final birds = event.docs.map<Bird>((e) => Bird.fromFire(e)).toList();
-  //   //   this.all = birds;
-  //   //   this.notifyListeners();
-  //   // });
-  //   final first5 = fire.collection(allPath).limit(2).snapshots();
-  //   final first1 = fire.collection('keyed').limit(3).snapshots();
-  //   return Observable.merge([first1, first5]).;
-  // }
-
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   all = getAll();
-  //   all?.listen((event) {print('All: ${event.docs.length}');});
-  // }
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -47,6 +29,7 @@ class _DiscoverPageState extends State<DiscoverPage> {
           padding: EdgeInsets.all(20),
           child: Consumer<BirdService>(builder: (context, birdService, _) {
             return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   'All Zim Birds',

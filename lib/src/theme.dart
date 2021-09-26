@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 ThemeData appTheme() => ThemeData(
       primaryColor: Colors.deepOrange,
-      textTheme: GoogleFonts.titilliumWebTextTheme(TextTheme(
+      textTheme: GoogleFonts.rubikTextTheme(TextTheme(
         headline6: TextStyle(
           fontWeight: FontWeight.w500,
           fontSize: 18,

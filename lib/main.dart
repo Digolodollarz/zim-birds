@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:provider/provider.dart';
 import 'package:zim_birds/src/home_page.dart';
+import 'package:zim_birds/src/purchases/purchases.dart';
 import 'package:zim_birds/src/services/bird_service.dart';
 import 'package:zim_birds/src/theme.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,6 +11,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   MobileAds.instance.initialize();
+  PaymentsHelper.initPlatformState();
   runApp(MyApp());
 }
 
@@ -32,9 +34,13 @@ class MyApp extends StatelessWidget {
               ),
             );
           return MultiProvider(
-            providers: [ChangeNotifierProvider(create: (_) => BirdService())],
+            providers: [
+              ChangeNotifierProvider(create: (_) => BirdService()),
+              ChangeNotifierProvider(create: (_) => PaymentsHelper()),
+            ],
             builder: (context, snapshot) {
               return MaterialApp(
+                debugShowCheckedModeBanner: false,
                 title: 'Zim Birds',
                 theme: appTheme(),
                 home: HomePage(),
