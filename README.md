@@ -7,7 +7,7 @@ This project has imagery for most of birds that are found in Zimbabwe,
 and audio recordings for a large number of them as well.
 
 ##
-Opt in to testing on Google Play https://play.google.com/apps/testing/tech.diggle.apps.zim_birds
+Find the app on Google Play https://play.google.com/apps/testing/tech.diggle.apps.zim_birds
 
 ## Screenshots
 ![Screenshot 1](assets/screenshots/Simulator Screen Shot - iPhone X - 2021-09-07 at 16.01.17.png)
